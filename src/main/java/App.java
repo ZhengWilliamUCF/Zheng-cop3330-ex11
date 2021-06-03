@@ -13,9 +13,8 @@ public class App {
         String Num1 = myApp.readEuros();
         String Num2 = myApp.readExchangeRateUS();
         int amount_from = Integer.parseInt(Num1);
-        double rate_to = 100;
         double rate_from = Double.parseDouble(Num2);
-        double amount_to = myApp.calcDollar(amount_from, rate_from, rate_to);
+        double amount_to = myApp.calcDollar(amount_from, rate_from);
         String outputString = myApp.generateOutputString(amount_from, rate_from, amount_to);
         myApp.printOutput(outputString);
     }
@@ -34,11 +33,11 @@ public class App {
         return in.nextLine();
     }
 
-    public double calcDollar(double amount_from, double rate_from, double rate_to){
-        return ((amount_from * rate_from) / rate_to);
+    public double calcDollar(double amount_from, double rate_from){
+        return (amount_from * rate_from);
     }
 
     public String generateOutputString(int amount_from, double rate_from, double amount_to){
-        return String.format("%d euros at an exchange rate of %.2f is\n%.2f U.S. dollars.", amount_from, rate_from, amount_to);
+        return String.format("%d euros at an exchange rate of %s is\n%.2f U.S. dollars.", amount_from, rate_from, amount_to);
     }
 }
